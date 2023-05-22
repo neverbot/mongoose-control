@@ -1,6 +1,6 @@
 {
   "name": "mongoose-control",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Migrations and seed/fixtures framework for node (v16+) and mongoose (v7+).",
   "main": "index.js",
   "type": "module",

@@ -29,7 +29,6 @@ let cwd;
  * Usage information.
  */
 let usage = [
-  '',
   '  Usage: mongoose-control [options] [command]',
   '',
   '  Options:',
