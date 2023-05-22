@@ -88,6 +88,7 @@ Create files for the data, i.e. `userFixtures.js`:
 ```javascript
 import { ObjectId } from 'mongodb';
 
+// you can have relations using the same ObjectIds in different collections
 const userId1 = new ObjectId();
 const bookId1 = new ObjectId();
 
@@ -131,7 +132,6 @@ await fixtures(fixturesData);
 
 Remember Mongoose have to be initialized before using `fixtures()`, and the models 
 we are going to use have to be registered in Mongoose.
-
 
 ## API
 
