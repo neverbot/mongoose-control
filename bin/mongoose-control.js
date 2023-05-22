@@ -21,11 +21,6 @@ let args = process.argv.slice(2);
 let options = { args: [] };
 
 /**
- * Current working directory.
- */
-let cwd;
-
-/**
  * Usage information.
  */
 let usage = [
@@ -60,7 +55,7 @@ function parseArguments() {
   let currentArg = '';
 
   // require an argument
-  function _required() {
+  function requireValue() {
     if (args.length) return args.shift();
     abort(currentArg + ' requires an argument');
   }
@@ -76,28 +71,28 @@ function parseArguments() {
         process.exit();
         break;
       case '--url':
-        options.mongoUrl = _required();
+        options.mongoUrl = requireValue();
         break;
 
       case '--models':
-        options.modelPath = _required();
+        options.modelPath = requireValue();
         break;
 
       // case '-c':
       // case '--chdir':
-      //   process.chdir((cwd = _required()));
+      //   process.chdir(requireValue());
       //   break;
       // case '--state-file':
-      //   options.stateFile = _required();
+      //   options.stateFile = requireValue();
       //   break;
       // case '--template-file':
-      //   template = fs.readFileSync(_required());
+      //   template = fs.readFileSync(requireValue());
       //   break;
       // case '--date-format':
-      //   options.dateFormat = _required();
+      //   options.dateFormat = requireValue();
       //   break;
       // case '--state-mongo':
-      //   options.stateMongo = _required();
+      //   options.stateMongo = requireValue();
       //   break;
       default:
         if (options.command) {

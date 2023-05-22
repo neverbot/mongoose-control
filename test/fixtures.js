@@ -166,7 +166,7 @@ describe('Fixtures', () => {
 
       assert.ok(data);
 
-      fixtures.reset(mongoose);
+      await fixtures.reset(mongoose);
 
       data = await model.count();
       assert.equal(0, data);
@@ -214,7 +214,7 @@ describe('Fixtures', () => {
 
       assert.ok(data);
 
-      fixtures.reset();
+      await fixtures.reset();
 
       data = await model.count();
       assert.equal(0, data);
