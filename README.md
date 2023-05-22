@@ -36,7 +36,7 @@ await fixtures({
 });
 ```
 
-## Example
+### Example
 
 ```javascript
 import mongoose from 'mongoose';
@@ -80,6 +80,58 @@ fixtures.save('users', {
 //  - data is an array of all documents created
 data = await fixtures('users');
 ```
+
+### Using files for fixtures and/or seeds
+
+Create files for the data, i.e. `userFixtures.js`:
+
+```javascript
+import { ObjectId } from 'mongodb';
+
+const userId1 = new ObjectId();
+const bookId1 = new ObjectId();
+
+const Users = [
+  {
+    _id: userId1,
+    name: 'Awesome User 1',
+    books: [bookId1],
+    ...
+  },
+  {
+    ...
+  },
+];
+
+const Books = [
+  {
+    _id: bookId1,
+    title: 'Awesome Book 1',
+    ...
+  },
+  {
+    ...
+  },
+];
+
+export default {
+  Users,
+  Books,
+};
+```
+
+Now you can use your fixtures in your tests or any other place:
+
+```javascript
+import { fixtures } from 'mongoose-control';
+import fixturesData from 'userFixtures.js';
+
+await fixtures(fixturesData);
+```
+
+Remember Mongoose have to be initialized before using `fixtures()`, and the models 
+we are going to use have to be registered in Mongoose.
+
 
 ## API
 
