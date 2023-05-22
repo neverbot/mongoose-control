@@ -36,26 +36,6 @@ async function fixtures(dataset, db) {
   );
 
   return results.flat();
-
-  // async.map(
-  //   Object.keys(dataset),
-  //   function (tableName, done) {
-  //     var model = db.model(tableName);
-
-  //     if (model) {
-  //       model.insertMany(dataset[tableName], function (err) {
-  //         done(err, Array.prototype.slice.call(arguments, 1));
-  //       });
-  //     } else {
-  //       done(new Error(tableName + ' does not exist'));
-  //     }
-  //   },
-  //   function (err, documentSet) {
-  //     if (callback) {
-  //       callback.call(fixtures, err, Array.prototype.concat.apply([], documentSet));
-  //     }
-  //   }
-  // );
 }
 
 // Save named fixture (for later)
@@ -104,7 +84,6 @@ fixtures.reset = async (modelName, db) => {
         await deleteModel(model);
       })
     );
-    // async.map(db.modelNames(), deleteModel, callback);
   }
 };
 
