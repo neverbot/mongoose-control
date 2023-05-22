@@ -1,0 +1,20 @@
+{
+  "name": "mongoose-control",
+  "version": "0.0.1",
+  "description": "Migration and seed/fixtures framework for node (v16+) and mongoose (v7+).",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neverbot/mongoose-control.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/neverbot/mongoose-control/issues"
+  },
+  "homepage": "https://github.com/neverbot/mongoose-control#readme"
+}
