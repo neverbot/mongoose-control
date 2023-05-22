@@ -42,7 +42,7 @@ let usage = [
   '     --help                  show this help message',
   '',
   '  Commands:',
-  '     seed   [file]    load initial data from file in a database',
+  '     seed [file]             load initial data from file in a database',
   // '     down   [name]    migrate down till given migration',
   // '     rollback         migrate down the last applied migration',
   // '     up     [name]    migrate up till given migration (the default command)',
