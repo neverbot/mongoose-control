@@ -3,11 +3,10 @@ The MIT License (MIT)
 Copyright (c) 2023 Iván Alonso (neverbot)
 
 Certain parts of this project are based on the following projects:
-
-- [`node-mongoose-fixtures`](https://github.com/kennethklee/node-mongoose-fixtures)
-  Copyright (c) 2014 Kenneth Lee
-- [`node-mongodb-migrations`](https://github.com/neverbot/node-mongodb-migrations)
-  Copyright (c) 2011 TJ Holowaychuk <tj@vision-media.ca>
+[`node-mongoose-fixtures`](https://github.com/kennethklee/node-mongoose-fixtures)
+Copyright (c) 2014 Kenneth Lee
+[`node-mongodb-migrations`](https://github.com/neverbot/node-mongodb-migrations)
+Copyright (c) 2011 TJ Holowaychuk <tj@vision-media.ca>
 
 Both projects use the MIT license. Please check its authors files for more 
 information.
