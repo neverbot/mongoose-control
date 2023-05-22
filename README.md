@@ -27,13 +27,13 @@ Both projects seem to be discontinued, so I decided to merge some of their featu
 import { fixtures } from 'mongoose-control';
 
 await fixtures({
-    <table name>: [
-        <record>,
-        <record>
+    <collection name>: [
+      <record>,
+      <record>
     ],
-    <table name>: [
-        <record>,
-        <record>
+    <collection name>: [
+      <record>,
+      <record>
     ]
 });
 ```
@@ -49,38 +49,38 @@ const userSchema = new mongoose.Schema({
     username: String,
     password: String
 });
-mongoose.model('users', userSchema);
+mongoose.model('Users', userSchema);
 
 // Book
 const bookSchema = new mongoose.Schema({
     title: String
 });
-mongoose.model('books', bookSchema);
+mongoose.model('Books', bookSchema);
 
 // Create dataset immediately
 //   - data is an array of all the documents created
 let data = await fixtures({
-    users: [
-        {username: 'one', password: 'pass'},
-        {username: 'two', password: 'pass'}
+    Users: [
+        { username: 'one', password: 'pass' },
+        { username: 'two', password: 'pass' }
     ],
-    books: [
-        {title: 'Enders Game'},
-        {title: 'Speaker of the Dead'}
+    Books: [
+        { title: 'Enders Game' },
+        { title: 'Speaker of the Dead' }
     ]
 });
 
 // Name a dataset for future use
-fixtures.save('users', {
+fixtures.save('Users', {
     users: [
-        {username: 'one', password: 'pass'},
-        {username: 'two', password: 'pass'}
+        { username: 'one', password: 'pass' },
+        { username: 'two', password: 'pass' }
     ]
 });
 
 // Use the named dataset
 //  - data is an array of all documents created
-data = await fixtures('users');
+data = await fixtures('Users');
 ```
 
 ### Using files for fixtures and/or seeds
@@ -139,10 +139,10 @@ we are going to use have to be registered in Mongoose.
 
 You can use some of the features of this package from the command line:
 
-Install the package as a global dependency to be able to use the `mongoose-control` command with:
-`npm i -g mongoose-control`
-
 ```bash
+# install the package globally:
+npm i -g mongoose-control
+
 # to see the available options:
 mongoose-control --help
 
