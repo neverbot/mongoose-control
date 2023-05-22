@@ -5,7 +5,7 @@
 [![GitHub license](https://img.shields.io/github/license/neverbot/mongoose-control)](https://github.com/neverbot/mongoose-control/blob/master/LICENSE)
 [![npm](https://img.shields.io/npm/v/mongoose-control)](https://www.npmjs.com/package/mongoose-control)
 
-Migrations and seed/fixtures framework for node (v16+) and mongoose (v7+).
+Migrations (pending) and seed/fixtures (already done) framework for node (v16+) and mongoose (v7+).
 
 This project is based in: 
 
