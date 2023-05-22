@@ -1,6 +1,6 @@
 {
   "name": "mongoose-control",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "description": "Migrations and seed/fixtures framework for node (v16+) and mongoose (v7+).",
   "main": "index.js",
   "type": "module",
@@ -18,7 +18,7 @@
     "mongoose",
     "test",
     "fixtures"
-  ],  
+  ],
   "author": "",
   "license": "MIT",
   "bugs": {
@@ -37,5 +37,8 @@
     "mocha": "^10.2.0",
     "mongoose": "^7.2.0",
     "prettier": "^2.8.8"
+  },
+  "dependencies": {
+    "colors": "^1.4.0"
   }
 }

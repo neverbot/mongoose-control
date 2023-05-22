@@ -6,16 +6,16 @@ import { fixtures } from '../src/fixtures.js';
 describe('Fixtures', () => {
   before(async () => {
     /*
-      mongoose.connection.once('open', () => {
-        // eslint-disable-next-line no-console
-        console.log(`Mongoose connected to ${mongoose.connection.host}`);
-      });
+    mongoose.connection.once('open', () => {
+      // eslint-disable-next-line no-console
+      console.log(`Mongoose connected to ${mongoose.connection.host}`);
+    });
 
-      mongoose.connection.on('error', (err) => {
-        // eslint-disable-next-line no-console
-        console.log(`Mongoose connection error, ${err}`);
-      });
-      */
+    mongoose.connection.on('error', (err) => {
+      // eslint-disable-next-line no-console
+      console.log(`Mongoose connection error, ${err}`);
+    });
+    */
 
     await mongoose.connect('mongodb://localhost:27017/testing');
 

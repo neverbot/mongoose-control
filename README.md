@@ -17,7 +17,9 @@ Both projects seem to be discontinued, so I decided to merge some of their featu
 
 ## Installation
 
-`npm i --save-dev mongoose-control`
+`npm i --save-dev mongoose-control` to use from your repository.
+
+`npm i -g mongoose-control` to use from the command line (see [CLI usage](#CLI)).
 
 ## Usage 
 
@@ -132,6 +134,21 @@ await fixtures(fixturesData);
 
 Remember Mongoose have to be initialized before using `fixtures()`, and the models 
 we are going to use have to be registered in Mongoose.
+
+### CLI
+
+You can use some of the features of this package from the command line:
+
+Install the package as a global dependency to be able to use the `mongoose-control` command with:
+`npm i -g mongoose-control`
+
+```bash
+# to see the available options:
+mongoose-control --help
+
+# use as seeder, with a seed file (you can use the test files):
+mongoose-control --url mongodb://localhost:27017/testing --models test/models/ seed test/example.data.js
+```
 
 ## API
 
