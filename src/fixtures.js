@@ -20,18 +20,22 @@ async function fixtures(dataset, db) {
 
   let results = await Promise.all(
     Object.keys(dataset).map(async (tableName) => {
-      var model = db.model(tableName);
+      let model;
+
+      try {
+        model = db.model(tableName);
+      } catch (err) {
+        // there is no mongoose model
+        throw new Error(tableName + ' model does not exist');
+      }
 
       if (model) {
         try {
           return await model.insertMany(dataset[tableName]);
-        } catch (e) {
-          throw new Error(`Error inserting data: ${e}`);
+        } catch (err) {
+          throw new Error(`Error inserting data: ${err}`);
         }
       }
-
-      // there is no mognoose model
-      throw new Error(tableName + ' model does not exist');
     })
   );
 
@@ -40,7 +44,7 @@ async function fixtures(dataset, db) {
 
 // Save named fixture (for later)
 fixtures.save = (name, data) => {
-  var oldFixture = savedFixtures[name];
+  let oldFixture = savedFixtures[name];
 
   savedFixtures[name] = data;
 

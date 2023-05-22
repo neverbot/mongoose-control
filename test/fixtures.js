@@ -81,6 +81,15 @@ describe('Fixtures', () => {
       }
     });
 
+    it('should error when passing in a non existent mongoose model', async () => {
+      try {
+        await fixtures({ faulty: [{ name: 'fault' }] }, mongoose);
+      } catch (err) {
+        assert.ok(err); // Error should exist
+        assert.equal('faulty model does not exist', err.message);
+      }
+    });
+
     it('should save a named fixture and then create that dataset', async () => {
       // Save the dataset as a named fixture
       await fixtures.save('tests:one', {
