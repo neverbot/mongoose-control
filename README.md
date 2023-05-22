@@ -17,7 +17,7 @@ Both projects seem to be discontinued, so I decided to merge some of their featu
 
 ## Installation
 
-`npm i mongoose-control`
+`npm i --save-dev mongoose-control`
 
 ## Usage 
 
