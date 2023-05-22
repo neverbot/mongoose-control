@@ -5,6 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "lint": "npx eslint . --ext js,json",
+    "lint:quiet": "npx eslint . --ext js,json --quiet",
+    "lint:fix": "npx eslint . --ext js,json --fix",    
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,5 +19,14 @@
   "bugs": {
     "url": "https://github.com/neverbot/mongoose-control/issues"
   },
-  "homepage": "https://github.com/neverbot/mongoose-control#readme"
+  "homepage": "https://github.com/neverbot/mongoose-control#readme",
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.21.8",
+    "eslint": "^8.41.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-json-format": "^2.0.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.8.8"
+  }
 }
