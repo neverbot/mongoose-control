@@ -78,7 +78,7 @@ fixtures.save('users', {
 
 // Use the named dataset
 //  - data is an array of all documents created
-let data = await fixtures('users');
+data = await fixtures('users');
 ```
 
 ## API
