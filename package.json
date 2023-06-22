@@ -8,7 +8,7 @@
     "lint": "npx eslint . --ext js,json",
     "lint:quiet": "npx eslint . --ext js,json --quiet",
     "lint:fix": "npx eslint . --ext js,json --fix",
-    "test": "NODE_ENV=test npx c8 mocha"
+    "test": "NODE_ENV=test npx c8 --all mocha"
   },
   "repository": {
     "type": "git",
