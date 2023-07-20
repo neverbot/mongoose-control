@@ -36,7 +36,7 @@ async function fixtures(dataset, db) {
           throw new Error(`Error inserting data: ${err}`);
         }
       }
-    })
+    }),
   );
 
   return results.flat();
@@ -86,7 +86,7 @@ fixtures.reset = async (modelName, db) => {
     return await Promise.all(
       db.modelNames().map(async (model) => {
         await deleteModel(model);
-      })
+      }),
     );
   }
 };

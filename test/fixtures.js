@@ -23,14 +23,14 @@ describe('Fixtures', () => {
       'tests',
       new mongoose.Schema({
         name: String,
-      })
+      }),
     );
 
     mongoose.model(
       'others',
       new mongoose.Schema({
         name: String,
-      })
+      }),
     );
   });
 
@@ -50,7 +50,7 @@ describe('Fixtures', () => {
           tests: [{ name: 'one' }, { name: 'two' }, { name: 'three' }],
           others: [{ name: 'other' }],
         },
-        mongoose
+        mongoose,
       );
 
       assert.equal(4, data.length);
@@ -76,7 +76,7 @@ describe('Fixtures', () => {
         assert.ok(err); // Error should exist
         assert.equal(
           'Dataset not a valid object or does not exist as a named fixture.',
-          err.message
+          err.message,
         );
       }
     });
@@ -157,7 +157,7 @@ describe('Fixtures', () => {
         'anothers',
         new mongoose.Schema({
           name: String,
-        })
+        }),
       );
 
       let data = await anotherModel.create({
