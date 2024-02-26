@@ -1,9 +1,9 @@
-import { ObjectId } from 'mongodb';
+import mongoose from 'mongoose';
 
 // you can have relations using the same ObjectIds in different collections
-const userId1 = new ObjectId();
-const userId2 = new ObjectId();
-const bookId1 = new ObjectId();
+const userId1 = new mongoose.Types.ObjectId();
+const userId2 = new mongoose.Types.ObjectId();
+const bookId1 = new mongoose.Types.ObjectId();
 
 const Users = [
   {
