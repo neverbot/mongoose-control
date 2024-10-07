@@ -5,9 +5,9 @@
 [![GitHub license](https://img.shields.io/github/license/neverbot/mongoose-control)](https://github.com/neverbot/mongoose-control/blob/master/LICENSE)
 [![npm](https://img.shields.io/npm/v/mongoose-control)](https://www.npmjs.com/package/mongoose-control)
 
-Migrations (pending) and seed/fixtures (already done) framework and cli for node (v16+) and mongoose (v7+).
+Migrations (pending) and seed/fixtures (already done) framework and cli for node (v18+) and mongoose (v7+).
 
-This project is based in: 
+This project is based in:
 
 - [`node-mongoose-fixtures`](https://github.com/kennethklee/node-mongoose-fixtures), by [Kenneth Lee](https://github.com/kennethklee).
 - [`node-mongodb-migrations`](https://github.com/neverbot/node-mongodb-migrations) by [Ivan Alonso (neverbot)](https://github.com/neverbot) forked from [`ikatun/node-migrate`](https://github.com/ikatun/node-migrate) by [ikatun](https://github.com/ikatun), in turn forked from [`tj/node-migrate`](https://github.com/tj/node-migrate) by [TJ Holowaychuk](https://github.com/tj).
@@ -21,7 +21,7 @@ Both projects seem to be discontinued, so I decided to merge some of their featu
 
 `npm i -g mongoose-control` to use from the command line (see [CLI usage](#CLI)).
 
-## Usage 
+## Usage
 
 ```javascript
 import { fixtures } from 'mongoose-control';
@@ -46,36 +46,33 @@ import { fixtures } from 'mongoose-control';
 
 // User
 const userSchema = new mongoose.Schema({
-    username: String,
-    password: String
+  username: String,
+  password: String,
 });
 mongoose.model('Users', userSchema);
 
 // Book
 const bookSchema = new mongoose.Schema({
-    title: String
+  title: String,
 });
 mongoose.model('Books', bookSchema);
 
 // Create dataset immediately
 //   - data is an array of all the documents created
 let data = await fixtures({
-    Users: [
-        { username: 'one', password: 'pass' },
-        { username: 'two', password: 'pass' }
-    ],
-    Books: [
-        { title: 'Enders Game' },
-        { title: 'Speaker of the Dead' }
-    ]
+  Users: [
+    { username: 'one', password: 'pass' },
+    { username: 'two', password: 'pass' },
+  ],
+  Books: [{ title: 'Enders Game' }, { title: 'Speaker of the Dead' }],
 });
 
 // Name a dataset for future use
 fixtures.save('Users', {
-    users: [
-        { username: 'one', password: 'pass' },
-        { username: 'two', password: 'pass' }
-    ]
+  users: [
+    { username: 'one', password: 'pass' },
+    { username: 'two', password: 'pass' },
+  ],
 });
 
 // Use the named dataset
@@ -132,7 +129,7 @@ import fixturesData from 'userFixtures.js';
 await fixtures(fixturesData);
 ```
 
-Remember Mongoose have to be initialized before using `fixtures()`, and the models 
+Remember Mongoose have to be initialized before using `fixtures()`, and the models
 we are going to use have to be registered in Mongoose.
 
 ### CLI
@@ -158,8 +155,8 @@ mongoose-control --url mongodb://localhost:27017/testing --models test/models/ s
 
 Immediately creates the documents from the dataset through the mongoose connection. Returns a flat array with every inserted fixture.
 
-* `dataset` can be a hash or a name of a named fixture.
-* `mongoose instance` is optional and is a singular instance of mongoose.
+- `dataset` can be a hash or a name of a named fixture.
+- `mongoose instance` is optional and is a singular instance of mongoose.
 
 ### Save a named fixture
 
@@ -167,8 +164,8 @@ Immediately creates the documents from the dataset through the mongoose connecti
 
 Save a fixture to be used for later. Returns previous existent fixture with the same name, if it existed.
 
-* `name` is the name of your new named fixture.
-* `dataset` is the hash of the dataset you want to save.
+- `name` is the name of your new named fixture.
+- `dataset` is the hash of the dataset you want to save.
 
 ### Retrieve a named fixture's dataset
 
@@ -176,7 +173,7 @@ Save a fixture to be used for later. Returns previous existent fixture with the 
 
 Retrieves a named fixture's dataset.
 
-* `name` is the name of the named fixture you wish to retrieve.
+- `name` is the name of the named fixture you wish to retrieve.
 
 ### Clear named fixture
 
@@ -184,7 +181,7 @@ Retrieves a named fixture's dataset.
 
 Clears named fixtures.
 
-* `name` is optional. It's the name of the named fixture. If omitted, all named fixtures will be cleared.
+- `name` is optional. It's the name of the named fixture. If omitted, all named fixtures will be cleared.
 
 ### Reset database collection(s)
 
@@ -192,5 +189,5 @@ Clears named fixtures.
 
 Deletes all documents within a collection. Returns the result of the delete operations.
 
-* `model name` is optional. It's the name of the collection. If omitted, all collections will be purged.
-* `mongoose instance` is optional and is a singular instance of mongoose.
+- `model name` is optional. It's the name of the collection. If omitted, all collections will be purged.
+- `mongoose instance` is optional and is a singular instance of mongoose.

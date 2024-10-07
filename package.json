@@ -40,5 +40,9 @@
   },
   "dependencies": {
     "colors": "^1.4.0"
+  },
+  "engines": {
+    "node": ">=18.19.0",
+    "npm": ">=10.2.3"
   }
 }
