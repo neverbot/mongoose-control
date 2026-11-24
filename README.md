@@ -5,7 +5,7 @@
 [![GitHub license](https://img.shields.io/github/license/neverbot/mongoose-control)](https://github.com/neverbot/mongoose-control/blob/master/LICENSE)
 [![npm](https://img.shields.io/npm/v/mongoose-control)](https://www.npmjs.com/package/mongoose-control)
 
-Migrations (pending) and seed/fixtures (already done) framework and cli for node (v18+) and mongoose (v7+).
+Migrations (pending) and seed/fixtures (already done) framework and cli for node (v18+) and mongoose (v7+, tested with v7, v8 and v9).
 
 This project is based in:
 
@@ -17,7 +17,7 @@ Both projects seem to be discontinued, so I decided to merge some of their featu
 
 ## Installation
 
-`npm i --save-dev mongoose-control` to use from your repository.
+`npm i --save-dev mongoose-control` to use from your repository. `mongoose` (v7+) is a peer dependency, so your project must have it installed.
 
 `npm i -g mongoose-control` to use from the command line (see [CLI usage](#CLI)).
 

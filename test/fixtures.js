@@ -70,24 +70,15 @@ describe('Fixtures', () => {
     });
 
     it('should error when passing in a string as dataset', async () => {
-      try {
-        await fixtures('faulty!', mongoose);
-      } catch (err) {
-        assert.ok(err); // Error should exist
-        assert.equal(
-          'Dataset not a valid object or does not exist as a named fixture.',
-          err.message,
-        );
-      }
+      await assert.rejects(fixtures('faulty!', mongoose), {
+        message: 'Dataset not a valid object or does not exist as a named fixture.',
+      });
     });
 
     it('should error when passing in a non existent mongoose model', async () => {
-      try {
-        await fixtures({ faulty: [{ name: 'fault' }] }, mongoose);
-      } catch (err) {
-        assert.ok(err); // Error should exist
-        assert.equal('faulty model does not exist', err.message);
-      }
+      await assert.rejects(fixtures({ faulty: [{ name: 'fault' }] }, mongoose), {
+        message: 'faulty model does not exist',
+      });
     });
 
     it('should save a named fixture and then create that dataset', async () => {
@@ -168,10 +159,10 @@ describe('Fixtures', () => {
 
       await fixtures.reset(mongoose);
 
-      data = await model.count();
+      data = await model.countDocuments();
       assert.equal(0, data);
 
-      data = await anotherModel.count();
+      data = await anotherModel.countDocuments();
       assert.equal(0, data);
     });
   });
@@ -216,8 +207,18 @@ describe('Fixtures', () => {
 
       await fixtures.reset();
 
-      data = await model.count();
+      data = await model.countDocuments();
       assert.equal(0, data);
+    });
+
+    it('should delete a particular model without passing a mongoose instance', async () => {
+      const model = mongoose.model('tests');
+      await model.create({ name: 'test' });
+      assert.equal(1, await model.countDocuments());
+
+      await fixtures.reset('tests');
+
+      assert.equal(0, await model.countDocuments());
     });
   });
 });

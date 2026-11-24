@@ -72,7 +72,7 @@ fixtures.reset = async (modelName, db) => {
     modelName = null;
   }
 
-  if (typeof modelName === 'undefined') {
+  if (typeof db === 'undefined') {
     db = mongoose;
   }
 
