@@ -19,7 +19,7 @@ Both projects seem to be discontinued, so I decided to merge some of their featu
 
 `npm i --save-dev mongoose-control` to use from your repository. `mongoose` (v7+) is a peer dependency, so your project must have it installed.
 
-`npm i -g mongoose-control` to use from the command line (see [CLI usage](#CLI)).
+The same local install provides the `mongoose-control` command line tool (see [CLI usage](#CLI)).
 
 ## Usage
 
@@ -134,18 +134,22 @@ we are going to use have to be registered in Mongoose.
 
 ### CLI
 
-You can use some of the features of this package from the command line:
+You can use some of the features of this package from the command line. Install it locally
+in your project (not globally), so the CLI and your models share the same `mongoose` instance:
 
 ```bash
-# install the package globally:
-npm i -g mongoose-control
+# install the package in your project:
+npm i --save-dev mongoose-control
 
 # to see the available options:
-mongoose-control --help
+npx mongoose-control --help
 
-# use as seeder, with a seed file (you can use the test files):
-mongoose-control --url mongodb://localhost:27017/testing --models test/models/ seed test/example.data.js
+# use as seeder, with your models directory and a seed file (see the test folder for examples):
+npx mongoose-control --url mongodb://localhost:27017/testing --models models/ seed data/seed.js
 ```
+
+Paths can be relative to the current directory or absolute. If anything fails, the error is shown
+and the command exits with code 1.
 
 ## API
 

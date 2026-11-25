@@ -6,6 +6,7 @@ import mongoose from 'mongoose';
 
 import { fixtures } from '../src/fixtures.js';
 import path from 'path';
+import { pathToFileURL } from 'url';
 import fs from 'fs/promises';
 
 import colors from 'colors/safe.js';
@@ -130,7 +131,7 @@ async function loadModels() {
     abort(colors.red('No models path specified'));
   }
 
-  let modelsPath = path.join(process.cwd(), options.modelPath);
+  let modelsPath = path.resolve(options.modelPath);
 
   // loop every file in options.modelPath directory
   const files = await fs.readdir(modelsPath);
@@ -138,9 +139,9 @@ async function loadModels() {
   for (const file of files) {
     try {
       // importing the file the mongoose model will be loaded
-      await import(path.join(modelsPath, file));
-    } catch (_) {
-      console.log(colors.red('Error importing file ' + file));
+      await import(pathToFileURL(path.join(modelsPath, file)).href);
+    } catch (err) {
+      console.log(colors.red('Error importing file ' + file + ': ' + err.message));
     }
   }
 
@@ -183,14 +184,19 @@ var commands = {
  * Seed data into the database, from a given file.
  */
 async function cmdSeed() {
+  if (!options.args[0]) {
+    await disconnect();
+    abort('No seed file specified');
+  }
+
   console.log(' ... ' + colors.cyan('Loading fixtures from') + ': ' + options.args[0]);
 
-  const { default: data } = await import(path.join(process.cwd(), options.args[0]));
-
   try {
+    const { default: data } = await import(pathToFileURL(path.resolve(options.args[0])).href);
     await fixtures(data, mongoose);
-  } catch (_) {
-    console.log(colors.red('Error loading fixtures from file ' + options.args[0]));
+  } catch (err) {
+    await disconnect();
+    abort('Error loading fixtures from file ' + options.args[0] + ': ' + err.message);
   }
 }
 
@@ -236,14 +242,16 @@ console.log(colors.green.underline('mongoose-control') + '\n');
 
 parseArguments();
 
-// connect to the database
-if (options.mongoUrl) {
-  await connect(options.mongoUrl);
-}
-
 // check the command exists
 let command = options.command || abort('Use mongoose-control --help to see available commands');
 if (!(command in commands)) abort('Unknown command "' + command + '"');
+
+// connect to the database
+if (!options.mongoUrl) {
+  abort('No mongodb url specified (use --url)');
+}
+
+await connect(options.mongoUrl);
 
 // load every mongoose model
 await loadModels();
